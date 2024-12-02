@@ -60,6 +60,9 @@ scene.add(directionalLight4)
     controls.maxPolarAngle = Math.PI / 2; // Limit vertical rotation to prevent looking under the model
     controls.minPolarAngle = 0; // Limit vertical rotation to prevent looking above the model
 
+    // Disable panning
+    controls.enablePan = false; // Disable panning
+
     // Create a gradient texture
     const createGradientTexture = () => {
       const canvas = document.createElement('canvas')
@@ -84,7 +87,7 @@ scene.add(directionalLight4)
     const points = [
       { position: new THREE.Vector3(-2, 0.5, 0), name: 'Point 1', targetPosition: new THREE.Vector3(-4.02, 1.88, 0) },
       { position: new THREE.Vector3(2, 1.4, 1), name: 'Point 2', targetPosition: new THREE.Vector3(2.62, 0.5, 0.9) },
-      { position: new THREE.Vector3(1.4, 1.4, -0.82), name: 'Point 3', targetPosition: new THREE.Vector3(1.7, 1, -1.92) } // New point
+      { position: new THREE.Vector3(1.4, 1.4, -0.82), name: 'Point 3', targetPosition: new THREE.Vector3(0.7, 1, -0.92) } // New point
     ]
 
     // Create spheres for each point with glassmorphic effect
