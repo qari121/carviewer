@@ -40,7 +40,7 @@ scene.add(directionalLight4)
 
     // Load the 3D model
     const loader = new GLTFLoader()
-    loader.load('src/assets/scene.glb', (gltf) => {
+    loader.load('/assets/scene.glb', (gltf) => {
       scene.add(gltf.scene)
       controls.target.copy(gltf.scene.position) // Set the target to the model's position
     }, undefined, (error) => {
