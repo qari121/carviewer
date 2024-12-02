@@ -3,7 +3,6 @@ import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { gsap } from 'gsap'
-import { GUI } from 'lil-gui'
 
 function App() {
   const cameraRef = useRef() // Reference to the camera
@@ -86,8 +85,8 @@ scene.add(directionalLight4)
     // Define interactable points
     const points = [
       { position: new THREE.Vector3(-2, 0.5, 0), name: 'Point 1', targetPosition: new THREE.Vector3(-4.02, 1.88, 0) },
-      { position: new THREE.Vector3(2, 1.4, 1), name: 'Point 2', targetPosition: new THREE.Vector3(2.62, 0.5, 0.9) },
-      { position: new THREE.Vector3(1.4, 1.4, -0.82), name: 'Point 3', targetPosition: new THREE.Vector3(0.7, 1, -0.92) } // New point
+      { position: new THREE.Vector3(2, 1.4, 1), name: 'Point 2', targetPosition: new THREE.Vector3(2.7, 0.4, .2) },
+      { position: new THREE.Vector3(1.4, 1.4, -0.82), name: 'Point 3', targetPosition: new THREE.Vector3(0.2, 0.9, -1.92) } // New point
     ]
 
     // Create spheres for each point with glassmorphic effect
@@ -134,12 +133,7 @@ scene.add(directionalLight4)
 
         // Animate the camera to the specified position when the point is clicked
         animateCameraTo(targetPosition)
-      } else {
-        // If no intersection, log the world position of the ray
-        const worldPosition = new THREE.Vector3()
-        worldPosition.setFromMatrixPosition(raycaster.ray.matrixWorld)
-       // console.log(`World Position: (${worldPosition.x}, ${worldPosition.y}, ${worldPosition.z})`)
-      }
+      } 
     }
 
     // Animate camera to a specific position using GSAP
@@ -177,38 +171,12 @@ scene.add(directionalLight4)
 
     window.addEventListener('resize', handleResize);
 
-    // Setup lil-gui
-    // const gui = new GUI()
-    // const cameraFolder = gui.addFolder('Camera Controls')
-    // const cameraPosition = { x: camera.position.x, y: camera.position.y, z: camera.position.z }
-    // const cameraRotation = { x: camera.rotation.x, y: camera.rotation.y, z: camera.rotation.z }
-
-    // cameraFolder.add(cameraPosition, 'x', -10, 10).onChange(() => {
-    //   camera.position.x = cameraPosition.x
-    // })
-    // cameraFolder.add(cameraPosition, 'y', -10, 10).onChange(() => {
-    //   camera.position.y = cameraPosition.y
-    // })
-    // cameraFolder.add(cameraPosition, 'z', -10, 10).onChange(() => {
-    //   camera.position.z = cameraPosition.z
-    // })
-    // cameraFolder.add(cameraRotation, 'x', -Math.PI, Math.PI).onChange(() => {
-    //   camera.rotation.x = cameraRotation.x
-    // })
-    // cameraFolder.add(cameraRotation, 'y', -Math.PI, Math.PI).onChange(() => {
-    //   camera.rotation.y = cameraRotation.y
-    // })
-    // cameraFolder.add(cameraRotation, 'z', -Math.PI, Math.PI).onChange(() => {
-    //   camera.rotation.z = cameraRotation.z
-    // })
-    // cameraFolder.open()
 
     // Cleanup on component unmount
     return () => {
       window.removeEventListener('resize', handleResize)
       window.removeEventListener('click', onMouseClick)
       document.body.removeChild(renderer.domElement)
-     // gui.destroy() // Clean up the GUI
     }
   }, [])
 
