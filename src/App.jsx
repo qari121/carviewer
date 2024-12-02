@@ -20,21 +20,29 @@ const ambientLight = new THREE.AmbientLight(0xffffff, 0.5) // Soft white light w
 scene.add(ambientLight)
 
 // Add multiple directional lights for even distribution
-const directionalLight1 = new THREE.DirectionalLight(0xffffff, 0.5)
+const directionalLight1 = new THREE.DirectionalLight(0xffffff, 1)
 directionalLight1.position.set(5, 10, 5)
 scene.add(directionalLight1)
 
-const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.5)
-directionalLight2.position.set(-5, 10, 5)
+const directionalLight2 = new THREE.DirectionalLight(0xffffff, 1)
+directionalLight2.position.set(-5, 1, 5)
 scene.add(directionalLight2)
 
-const directionalLight3 = new THREE.DirectionalLight(0xffffff, 0.5)
-directionalLight3.position.set(5, 10, -5)
+
+
+const directionalLight3 = new THREE.DirectionalLight(0xffffff, 1)
+directionalLight3.position.set(5, 1, -5)
 scene.add(directionalLight3)
 
-const directionalLight4 = new THREE.DirectionalLight(0xffffff, 0.5)
-directionalLight4.position.set(-5, 10, -5)
+const directionalLight4 = new THREE.DirectionalLight(0xffffff, 1)
+directionalLight4.position.set(-5, 1, -5)
 scene.add(directionalLight4)
+
+   
+const directionalLight5 = new THREE.DirectionalLight(0xffffff, 1)
+directionalLight5.position.set(-5, 10, -5)
+scene.add(directionalLight5)
+
 
     // Load the 3D model
     const loader = new GLTFLoader()
