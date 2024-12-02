@@ -13,10 +13,9 @@ function App() {
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
     cameraRef.current = camera // Store camera reference
-    const renderer = new THREE.WebGLRenderer({ antialias: true })
-    renderer.setSize(window.innerWidth, window.innerHeight)
-    document.body.appendChild(renderer.domElement)
-
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight); // Set initial size
+    document.body.appendChild(renderer.domElement);
 // Ambient light
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5) // Soft white light with reduced intensity
 scene.add(ambientLight)
@@ -136,7 +135,7 @@ scene.add(directionalLight4)
         // If no intersection, log the world position of the ray
         const worldPosition = new THREE.Vector3()
         worldPosition.setFromMatrixPosition(raycaster.ray.matrixWorld)
-        console.log(`World Position: (${worldPosition.x}, ${worldPosition.y}, ${worldPosition.z})`)
+       // console.log(`World Position: (${worldPosition.x}, ${worldPosition.y}, ${worldPosition.z})`)
       }
     }
 
@@ -168,18 +167,18 @@ scene.add(directionalLight4)
 
     // Handle window resize
     const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight
-      camera.updateProjectionMatrix()
-      renderer.setSize(window.innerWidth, window.innerHeight)
-    }
+      camera.aspect = window.innerWidth / window.innerHeight; // Update camera aspect ratio
+      camera.updateProjectionMatrix(); // Update the camera projection matrix
+      renderer.setSize(window.innerWidth, window.innerHeight); // Update renderer size
+    };
 
-    window.addEventListener('resize', handleResize)
+    window.addEventListener('resize', handleResize);
 
     // Setup lil-gui
-    const gui = new GUI()
-    const cameraFolder = gui.addFolder('Camera Controls')
-    const cameraPosition = { x: camera.position.x, y: camera.position.y, z: camera.position.z }
-    const cameraRotation = { x: camera.rotation.x, y: camera.rotation.y, z: camera.rotation.z }
+    // const gui = new GUI()
+    // const cameraFolder = gui.addFolder('Camera Controls')
+    // const cameraPosition = { x: camera.position.x, y: camera.position.y, z: camera.position.z }
+    // const cameraRotation = { x: camera.rotation.x, y: camera.rotation.y, z: camera.rotation.z }
 
     // cameraFolder.add(cameraPosition, 'x', -10, 10).onChange(() => {
     //   camera.position.x = cameraPosition.x
@@ -206,7 +205,7 @@ scene.add(directionalLight4)
       window.removeEventListener('resize', handleResize)
       window.removeEventListener('click', onMouseClick)
       document.body.removeChild(renderer.domElement)
-      gui.destroy() // Clean up the GUI
+     // gui.destroy() // Clean up the GUI
     }
   }, [])
 
